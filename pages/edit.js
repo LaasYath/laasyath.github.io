@@ -1,12 +1,12 @@
+import { useTheme } from "next-themes";
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Button from "../components/Button";
 import Header from "../components/Header";
-import { v4 as uuidv4 } from "uuid";
-import { useTheme } from "next-themes";
 
 // Data
-import yourData from "../data/portfolio.json";
 import Cursor from "../components/Cursor";
+import yourData from "../data/portfolio.json";
 
 const Edit = () => {
   // states
@@ -54,7 +54,7 @@ const Edit = () => {
   };
 
   const deleteProject = (id) => {
-    const copyProjects = data.projects;
+    let copyProjects = data.projects;
     copyProjects = copyProjects.filter((project) => project.id !== id);
     setData({ ...data, projects: copyProjects });
   };
@@ -83,7 +83,7 @@ const Edit = () => {
   };
 
   const deleteService = (id) => {
-    const copyServices = data.services;
+    let copyServices = data.services;
     copyServices = copyServices.filter((service) => service.id !== id);
     setData({ ...data, services: copyServices });
   };
@@ -111,7 +111,7 @@ const Edit = () => {
   };
 
   const deleteSocials = (id) => {
-    const copySocials = data.socials;
+    let copySocials = data.socials;
     copySocials = copySocials.filter((social) => social.id !== id);
     setData({ ...data, socials: copySocials });
   };
