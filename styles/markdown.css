@@ -2,6 +2,8 @@
 
 /* Markdown Container */
 
+@reference "tailwindcss";
+
 .markdown-class {
   @apply mt-5 p-5;
 }
