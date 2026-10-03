@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#0d0d0d"/>
+  <defs>
+    <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0L0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="400" fill="url(#g)"/>
+
+  <!-- Outer package -->
+  <rect x="270" y="68" width="260" height="264" rx="4"
+    fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+
+  <!-- Inner die -->
+  <rect x="300" y="98" width="200" height="204" rx="2"
+    fill="rgba(245,158,11,0.04)" stroke="rgba(245,158,11,0.35)" stroke-width="1"/>
+
+  <!-- Functional blocks -->
+  <rect x="308" y="106" width="88" height="56" fill="rgba(245,158,11,0.07)" stroke="rgba(245,158,11,0.22)" stroke-width="1"/>
+  <text x="352" y="139" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(245,158,11,0.55)" letter-spacing="2">ALU</text>
+
+  <rect x="404" y="106" width="88" height="56" fill="rgba(245,158,11,0.07)" stroke="rgba(245,158,11,0.22)" stroke-width="1"/>
+  <text x="448" y="139" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(245,158,11,0.55)" letter-spacing="2">FPU</text>
+
+  <rect x="308" y="170" width="56" height="56" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="336" y="202" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.35)" letter-spacing="1">REG</text>
+
+  <rect x="372" y="170" width="56" height="56" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="400" y="202" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.35)" letter-spacing="1">CTRL</text>
+
+  <rect x="436" y="170" width="56" height="56" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="464" y="202" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.35)" letter-spacing="1">MEM</text>
+
+  <rect x="308" y="234" width="184" height="60" fill="rgba(245,158,11,0.05)" stroke="rgba(245,158,11,0.18)" stroke-width="1"/>
+  <text x="400" y="268" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(245,158,11,0.45)" letter-spacing="3">PIPELINE</text>
+
+  <!-- Pins top (8) -->
+  <line x1="312" y1="60" x2="312" y2="68" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="332" y1="60" x2="332" y2="68" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="352" y1="60" x2="352" y2="68" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="372" y1="60" x2="372" y2="68" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="428" y1="60" x2="428" y2="68" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="448" y1="60" x2="448" y2="68" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="468" y1="60" x2="468" y2="68" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="488" y1="60" x2="488" y2="68" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+
+  <!-- Pins bottom (8) -->
+  <line x1="312" y1="332" x2="312" y2="340" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="332" y1="332" x2="332" y2="340" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="352" y1="332" x2="352" y2="340" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="372" y1="332" x2="372" y2="340" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="428" y1="332" x2="428" y2="340" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="448" y1="332" x2="448" y2="340" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="468" y1="332" x2="468" y2="340" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="488" y1="332" x2="488" y2="340" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+
+  <!-- Pins left (7) -->
+  <line x1="262" y1="100" x2="270" y2="100" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="262" y1="128" x2="270" y2="128" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="262" y1="156" x2="270" y2="156" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="262" y1="200" x2="270" y2="200" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="262" y1="244" x2="270" y2="244" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="262" y1="272" x2="270" y2="272" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="262" y1="300" x2="270" y2="300" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+
+  <!-- Pins right (7) -->
+  <line x1="530" y1="100" x2="538" y2="100" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="530" y1="128" x2="538" y2="128" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="530" y1="156" x2="538" y2="156" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="530" y1="200" x2="538" y2="200" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="530" y1="244" x2="538" y2="244" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="530" y1="272" x2="538" y2="272" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <line x1="530" y1="300" x2="538" y2="300" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+
+  <!-- Label -->
+  <text x="400" y="372" text-anchor="middle" font-family="monospace" font-size="11"
+    fill="rgba(255,255,255,0.3)" letter-spacing="10">RISC-V</text>
+  <rect x="352" y="383" width="96" height="1" fill="rgba(245,158,11,0.3)"/>
+</svg>

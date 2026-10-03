@@ -1,195 +1,76 @@
 import { Popover } from "@headlessui/react";
-import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import Button from "../Button";
-// Local Data
 import data from "../../data/portfolio.json";
 
-const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
+const NavLink = ({ onClick, children }) => (
+  <button
+    onClick={onClick}
+    className="text-xs text-white border border-white/20 hover:border-white hover:bg-white/10 transition-colors tracking-widest px-4 py-2"
+  >
+    {children}
+  </button>
+);
+
+const Header = ({ isBlog }) => {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
   const { name, showBlog, showResume } = data;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <>
-      <Popover className="block tablet:hidden mt-5">
+      {/* Mobile header */}
+      <Popover className="block tablet:hidden">
         {({ open }) => (
           <>
-            <div className="flex items-center justify-between p-2 laptop:p-0">
-              <h1
+            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+              <button
                 onClick={() => router.push("/")}
-                className="font-medium p-2 laptop:p-0 link"
+                className="text-sm text-white tracking-widest"
               >
-                {name}.
-              </h1>
-
-              <div className="flex items-center">
-                {data.darkMode && (
-                  <Button
-                    onClick={() =>
-                      setTheme(theme === "dark" ? "light" : "dark")
-                    }
-                  >
-                    <img
-                      className="h-6"
-                      src={`/images/${
-                        theme === "dark" ? "moon.svg" : "sun.svg"
-                      }`}
-                    ></img>
-                  </Button>
-                )}
-
-                <Popover.Button>
-                  <img
-                    className="h-5"
-                    src={`/images/${
-                      !open
-                        ? theme === "dark"
-                          ? "menu-white.svg"
-                          : "menu.svg"
-                        : theme === "light"
-                        ? "cancel.svg"
-                        : "cancel-white.svg"
-                    }`}
-                  ></img>
-                </Popover.Button>
-              </div>
+                {name.split(" ")[0].toUpperCase()}.
+              </button>
+              <Popover.Button className="text-xs text-white border border-white/20 hover:border-white hover:bg-white/10 transition-colors tracking-widest px-4 py-2">
+                {open ? "CLOSE" : "MENU"}
+              </Popover.Button>
             </div>
-            <Popover.Panel
-              className={`absolute right-0 z-10 w-11/12 p-4 ${
-                theme === "dark" ? "bg-slate-800" : "bg-white"
-              } shadow-md rounded-md`}
-            >
-              {!isBlog ? (
-                <div className="grid grid-cols-1">
-                  <Button onClick={handleWorkScroll}>Work</Button>
-                  <Button onClick={handleAboutScroll}>About</Button>
-                  {showBlog && (
-                    <Button onClick={() => router.push("/blog")}>Blog</Button>
-                  )}
-                  {showResume && (
-                    <Button
-                      onClick={() =>
-                        window.open("mailto:laasya.yatham@utexas.edu")
-                      }
-                    >
-                      Resume
-                    </Button>
-                  )}
-
-                  <Button
-                    onClick={() => window.open("mailto:laasya.yatham@utexas.edu")}
-                  >
-                    Contact
-                  </Button>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1">
-                  <Button onClick={() => router.push("/")} classes="first:ml-1">
-                    Home
-                  </Button>
-                  {showBlog && (
-                    <Button onClick={() => router.push("/blog")}>Blog</Button>
-                  )}
-                  {showResume && (
-                    <Button
-                      onClick={() => router.push("/resume")}
-                      classes="first:ml-1"
-                    >
-                      Resume
-                    </Button>
-                  )}
-
-                  <Button
-                    onClick={() => window.open("mailto:laasya.yatham@utexas.edu")}
-                  >
-                    Contact
-                  </Button>
-                </div>
-              )}
+            <Popover.Panel className="absolute left-0 right-0 z-50 bg-black border-b border-white/10 px-6 py-4 space-y-3">
+              <NavLink onClick={() => router.push("/")}>Home</NavLink>
+              <NavLink onClick={() => router.push("/projects")}>Projects</NavLink>
+              {showBlog && <NavLink onClick={() => router.push("/blog")}>Blog</NavLink>}
+              {showResume && <NavLink onClick={() => router.push("/resume")}>Resume</NavLink>}
+              <NavLink onClick={() => window.open("mailto:laasya.yatham@utexas.edu")}>
+                Contact
+              </NavLink>
             </Popover.Panel>
           </>
         )}
       </Popover>
-      <div
-        className={`mt-10 hidden flex-row items-center justify-between sticky ${
-          theme === "light" && "bg-white"
-        } dark:text-white top-0 z-10 tablet:flex`}
-      >
-        <h1
+
+      {/* Desktop header */}
+      <div className="hidden tablet:flex items-center justify-between sticky top-0 z-50 bg-black border-b border-white/10 px-8 laptop:px-16 py-4">
+        <button
           onClick={() => router.push("/")}
-          className="font-medium cursor-pointer mob:p-2 laptop:p-0"
+          className="text-sm text-white hover:text-gray-300 transition-colors tracking-widest"
         >
-          {name}.
-        </h1>
-        {!isBlog ? (
-          <div className="flex">
-            <Button onClick={handleWorkScroll}>Work</Button>
-            <Button onClick={handleAboutScroll}>About</Button>
-            {showBlog && (
-              <Button onClick={() => router.push("/blog")}>Blog</Button>
-            )}
-            {showResume && (
-              <Button
-                onClick={() => router.push("/resume")}
-                classes="first:ml-1"
-              >
-                Resume
-              </Button>
-            )}
+          {name.split(" ")[0].toUpperCase()}.
+        </button>
 
-            <Button onClick={() => window.open("mailto:laasya.yatham@utexas.edu")}>
-              Contact
-            </Button>
-            {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
-              </Button>
-            )}
-          </div>
-        ) : (
-          <div className="flex">
-            <Button onClick={() => router.push("/")}>Home</Button>
-            {showBlog && (
-              <Button onClick={() => router.push("/blog")}>Blog</Button>
-            )}
-            {showResume && (
-              <Button
-                onClick={() => router.push("/resume")}
-                classes="first:ml-1"
-              >
-                Resume
-              </Button>
-            )}
-
-            <Button onClick={() => window.open("mailto:laasya.yatham@utexas.edu")}>
-              Contact
-            </Button>
-
-            {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
-              </Button>
-            )}
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          {!isBlog && (
+            <>
+              <NavLink onClick={() => router.push("/#summary")}>About</NavLink>
+            </>
+          )}
+          {isBlog && <NavLink onClick={() => router.push("/")}>Home</NavLink>}
+          <NavLink onClick={() => router.push("/projects")}>Projects</NavLink>
+          {showBlog && <NavLink onClick={() => router.push("/blog")}>Blog</NavLink>}
+          {showResume && <NavLink onClick={() => router.push("/resume")}>Resume</NavLink>}
+          <a
+            href="mailto:laasya.yatham@utexas.edu"
+            className="ml-4 border border-white/30 text-xs text-white hover:border-white hover:bg-white/10 transition-colors tracking-widest px-4 py-2"
+          >
+            CONTACT
+          </a>
+        </div>
       </div>
     </>
   );
